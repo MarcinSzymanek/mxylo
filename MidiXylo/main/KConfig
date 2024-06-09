@@ -1,0 +1,140 @@
+menu "XyloMidi Configuration"
+
+    menu "Select features"
+
+        config FEATURE_LCD_ON
+            bool "FEATURE_LCD"
+            default true
+            help
+                Enable or disable LCD display
+
+        config FEATURE_USB_ON
+            bool "FEATURE_USB"
+            default true
+            help
+                Enable or disable sending USB messages
+
+    endmenu # Select features
+
+    menu "SerLCD I2C pins"
+
+        config LCD_I2C_SCL_PIN
+            int "LCD_I2C_SCL_PIN"
+            default 47
+
+        config LCD_I2C_SDA_PIN
+            int "LCD_I2C_SDA_PIN"
+            default 48
+
+    endmenu # SerLCD I2C pins
+
+    menu "M-Xylo interrupts"
+
+        config PAD_SET_0_INT_PIN
+            int "PAD_SET_0_INT_PIN"
+            default 3
+            help
+                Pin number of interrupt for pad set 0 (1-8)
+
+        config PAD_SET_1_INT_PIN
+            int "PAD_SET_1_INT_PIN"
+            default 8
+            help
+                Pin number of interrupt for pad set 1 (8-15)
+
+        config PAD_SET_2_INT_PIN
+            int "PAD_SET_2_INT_PIN"
+            default 6
+            help
+                Pin number of interrupt for pad set 1 (16-25)
+
+        config SWITCH_INT_PIN
+            int "SWITCH_INT_PIN"
+            default 36
+            help
+                Pin number of interrupt for switches
+
+        config BUTTON_INT_PIN
+            int "BUTTON_INT_PIN"
+            default 35
+            help
+                Pin number of interrupt for buttons
+    endmenu # Pad interrupts
+
+    menu "ADC and MUX"
+
+        menu "MUX"
+            menu "MUX PADS 0"
+            config MUX_P0_PIN_S0
+                int "MUX_P0_PIN_S0"
+                default 11
+            config MUX_P0_PIN_S1
+                int "MUX_P0_PIN_S1"
+                default 12
+            config MUX_P0_PIN_S2
+                int "MUX_P0_PIN_S2"
+                default 13
+            config MUX_P0_PIN_S3
+                int "MUX_P0_PIN_S3"
+                default 14
+
+
+            endmenu #MUX PADS 0
+
+            menu "MUX PADS 1"
+                config MUX_P1_PIN_S0
+                    int "MUX_P1_PIN_S0"
+                    default 15
+                config MUX_P1_PIN_S1
+                    int "MUX_P1_PIN_S1"
+                    default 16
+                config MUX_P1_PIN_S2
+                    int "MUX_P1_PIN_S2"
+                    default 17
+                config MUX_P1_PIN_S3
+                    int "MUX_P1_PIN_S3"
+                    default 18
+
+                endmenu #MUX PADS 1
+
+            menu "MUX MISC"
+                config MUX_MISC_PIN_S0
+                    int "MUX_MISC_PIN_S0"
+                    default 42
+                config MUX_MISC_PIN_S1
+                    int "MUX_MISC_PIN_S1"
+                    default 41
+                config MUX_MISC_PIN_S2
+                    int "MUX_MISC_PIN_S2"
+                    default 40
+                config MUX_MISC_PIN_S3
+                    int "MUX_MISC_PIN_S3"
+                    default 39
+
+                endmenu #MUX MISC
+        endmenu # MUX menu
+
+        menu "ADC"
+            config XMIDI_CHAN_MUX_PADS_0
+                int "XMIDI_CHAN_MUX_P0"
+                # ADC_1_C9 : pin 10
+                default 9
+                help
+                    ADC channel used by MUX_P0 (Pads 0-15)
+                    It is NOT the GPIO pin number
+            config XMIDI_CHAN_MUX_PADS_1
+                int "XMIDI_CHAN_MUX_P1"
+                # ADC_1_C6 : pin 7
+                default 6
+                help
+                    ADC channel used by MUX_P1 (Pads 16-24)
+            config XMIDI_CHAN_MUX_MISC
+                int "XMIDI_CHAN_MUX_MISC"
+                # adc_1_chan1 : gpio 2
+                default 1
+                help
+                    ADC channel used by MUX_MISC (Buttons 0-11, Knobs 0-3)
+        endmenu # ADC menu
+    endmenu # ADC and MUX menu
+
+endmenu
